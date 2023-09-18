@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from datetime import datetime
+from ttkthemes import ThemedStyle
 
 # Global variables
 alarms = []
@@ -22,11 +23,12 @@ def set_alarm():
     try:
         alarm_time = datetime.strptime(alarm_time_str, '%H:%M')
         alarms.append(alarm_time)
-        alarm_label = ttk.Label(root, text=alarm_time.strftime('%H:%M'))
-        alarm_label.pack()
+        alarm_label = ttk.Label(root, text=alarm_time.strftime(
+            '%H:%M'), style="Alarm.TLabel")
+        alarm_label.pack(pady=5)
         check_alarms()
     except ValueError:
-        alarm_status.config(text="Invalid time format")
+        alarm_status.config(text="Invalid time format", style="Error.TLabel")
 
 # Function to check the alarms
 
@@ -41,7 +43,7 @@ def check_alarms():
 
 
 def alarm_ring():
-    alarm_status.config(text="Alarm Activated")
+    alarm_status.config(text="Alarm Activated", style="Activated.TLabel")
     alarms.clear()
     set_alarm_button.config(state=tk.NORMAL)
     turn_off_button.config(state=tk.NORMAL)
@@ -50,7 +52,7 @@ def alarm_ring():
 
 
 def turn_off_alarm():
-    alarm_status.config(text="Alarm Deactivated")
+    alarm_status.config(text="Alarm Deactivated", style="Deactivated.TLabel")
     set_alarm_button.config(state=tk.NORMAL)
     turn_off_button.config(state=tk.DISABLED)
 
@@ -59,28 +61,46 @@ def turn_off_alarm():
 root = tk.Tk()
 root.title("24-Hour Alarm Clock")
 
+# Apply the 'plastik' theme using ThemedStyle
+style = ThemedStyle(root)
+style.set_theme("plastik")
+
+# Define custom styles
+style.configure("Alarm.TLabel", foreground="blue", font=("Helvetica", 24),
+                background="lightgray", padding=10, borderwidth=2, relief="raised")
+style.configure("TButton", foreground="white", background="blue", font=(
+    "Helvetica", 14), borderwidth=0, relief="flat", padding=10, borderRadius=10)
+style.configure("Activated.TLabel", foreground="green", font=(
+    "Helvetica", 18), background="lightgray", padding=10, borderwidth=2, relief="raised")
+style.configure("Deactivated.TLabel", foreground="red", font=(
+    "Helvetica", 18), background="lightgray", padding=10, borderwidth=2, relief="raised")
+style.configure("Error.TLabel", foreground="red", font=("Helvetica", 18),
+                background="lightgray", padding=10, borderwidth=2, relief="raised")
+
 # Label to display the current time
 time_label = ttk.Label(root, font=("Helvetica", 48))
-time_label.pack()
+time_label.pack(pady=20)
 
 # Entry widget to set the alarm time
-alarm_label = ttk.Label(root, text="Set Alarm Time (HH:MM):")
-alarm_label.pack()
-alarm_time_entry = ttk.Entry(root)
-alarm_time_entry.pack()
+alarm_label = ttk.Label(
+    root, text="Set Alarm Time (HH:MM):", font=("Helvetica", 18))
+alarm_label.pack(pady=10)
+alarm_time_entry = ttk.Entry(root, font=("Helvetica", 16))
+alarm_time_entry.pack(pady=10)
 
 # Button to set the alarm
-set_alarm_button = ttk.Button(root, text="Set Alarm", command=set_alarm)
-set_alarm_button.pack()
+set_alarm_button = ttk.Button(
+    root, text="Set Alarm", command=set_alarm, style="TButton")
+set_alarm_button.pack(pady=10)
 
 # Button to turn off the alarm
-turn_off_button = ttk.Button(
-    root, text="Turn Off Alarm", command=turn_off_alarm, state=tk.DISABLED)
-turn_off_button.pack()
+turn_off_button = ttk.Button(root, text="Turn Off Alarm",
+                             command=turn_off_alarm, style="TButton", state=tk.DISABLED)
+turn_off_button.pack(pady=10)
 
 # Label to display alarm status
-alarm_status = ttk.Label(root, text="")
-alarm_status.pack()
+alarm_status = ttk.Label(root, text="", font=("Helvetica", 18))
+alarm_status.pack(pady=10)
 
 # Update the time label initially and every second
 update_time()
