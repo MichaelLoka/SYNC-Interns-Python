@@ -17,9 +17,8 @@ message = f'The OTP Verfication Code {six_digit_number}'
 
 # SMTP server configuration (for Gmail)
 smtp_server = 'smtp.gmail.com'
-smtp_port = 587  # 587 is the standard TLS port
+smtp_port = 587
 
-# Your email credentials
 username = 'test.acc0unt.2069@gmail.com'
 password = 'gljzmihvivfrqnyg '
 
@@ -44,6 +43,7 @@ try:
     # Close the connection to the SMTP server
     server.quit()
     print(f'\nEmail sent to {receiver_email} successfully')
+
 except Exception as e:
     print(f'An error occurred: {str(e)}')
 
