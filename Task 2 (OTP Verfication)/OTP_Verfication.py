@@ -8,7 +8,7 @@ random_number = random.randint(0, 999999)
 six_digit_number = f'{random_number:06d}'
 
 # User input for recipient's email address
-receiver_email = "senor.rodrigo.50@gmail.com"
+receiver_email = input("Please Enter Your Email Address: ")
 
 # Email configuration
 sender_email = 'test.acc0unt.2069@gmail.com'
@@ -47,3 +47,10 @@ try:
 except Exception as e:
     print(f'An error occurred: {str(e)}')
 
+while True:
+    userOTP = input(f"Please Enter The Recieved OTP on {receiver_email}: ")
+    if userOTP == six_digit_number:
+        print("Welcome You Are Now Verified :)")
+        break
+    else:
+        print("This OTP Was Incorrect Please Try Again")
