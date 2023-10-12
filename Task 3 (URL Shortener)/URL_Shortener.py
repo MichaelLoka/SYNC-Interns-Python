@@ -1,15 +1,9 @@
-import requests
+import pyshorteners as shr
 
+url = input("Please Enter The URL: ")
 
-def shorten_link(full_link, link_name):
-    api_key = "21412c9a2487d51707121126d44394de93935"
-    base_url = " https://cutt.ly/api/api.php"
+def shorten_link(url):
+    short = shr.Shortener()
+    print(short.tinyurl.short(url))
 
-    payload = {'key': api_key, 'short': full_link, 'name': link_name}
-    request = requests.get(base_url, params=payload)
-    data = request.json()
-    print("www")
-    print(data)
-
-
-shorten_link("https://cutt.ly/api-documentation/regular-api", "code123")
+shorten_link(url)
