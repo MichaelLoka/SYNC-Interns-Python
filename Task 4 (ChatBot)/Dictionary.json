@@ -1,0 +1,48 @@
+{
+  "questions": [
+    {
+      "question": "What is your question?",
+      "answer": "This is your answers."
+    },
+    {
+      "question": "hello",
+      "answer": "hi there"
+    },
+    {
+      "question": "hi there",
+      "answer": "hello there"
+    },
+    {
+      "question": "hey",
+      "answer": "what's up"
+    },
+    {
+      "question": "what's up",
+      "answer": "all good"
+    },
+    {
+      "question": "how you doing",
+      "answer": "all good what about you"
+    },
+    {
+      "question": "i am good",
+      "answer": "good to hear that"
+    },
+    {
+      "question": "what is the capital of india",
+      "answer": "New Delhi"
+    },
+    {
+      "question": "can you tell me something",
+      "answer": "what do you want to hear"
+    },
+    {
+      "question": "i have a question for you",
+      "answer": "I would be happy to provide you with the answer"
+    },
+    {
+      "question": "what is the name given to you",
+      "answer": "i have no name but i would be happy if i was named Michael"
+    }
+  ]
+}
